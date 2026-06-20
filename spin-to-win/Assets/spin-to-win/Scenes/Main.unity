@@ -119,6 +119,40 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &586218778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6056757453459037177, guid: 29a371c217de04d2db6071342df074dc, type: 3}
+  m_PrefabInstance: {fileID: 5961865020725507029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &586218785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586218778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114f8e946245741bd937247679d9cbe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!1 &1042920335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536397648030329247, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
+  m_PrefabInstance: {fileID: 4395614135600029552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1042920343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042920335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb187bcb904904095a7eb6e0b5849a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &2952482620173631003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -224,22 +258,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 7081121542279595105, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7764919335383139425, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7764919335383139425, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7764919335383139425, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8536397648030329247, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
       propertyPath: m_Name
       value: SpaceShip
@@ -247,7 +265,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8536397648030329247, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1042920343}
   m_SourcePrefab: {fileID: 100100000, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
 --- !u!1001 &5961865020725507029
 PrefabInstance:
@@ -302,9 +323,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8697500900626316398, guid: 29a371c217de04d2db6071342df074dc, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6056757453459037177, guid: 29a371c217de04d2db6071342df074dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 586218785}
   m_SourcePrefab: {fileID: 100100000, guid: 29a371c217de04d2db6071342df074dc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
