@@ -5,6 +5,7 @@ public class AttachmentSystem : MonoBehaviour
 {
     private DistanceJoint2D _joint; //same distance between two objects
     private LineRenderer _line; //draw line (temporary, later there is going to be a sprite)
+    public bool isConnected = false;
 
     void Awake()
     {
@@ -14,7 +15,6 @@ public class AttachmentSystem : MonoBehaviour
         _line.startWidth = 0.05f;
         _line.endWidth = 0.05f;
         _line.enabled = false;
-
     }
 
     // Update is called once per frame
@@ -36,6 +36,8 @@ public class AttachmentSystem : MonoBehaviour
         {
             return;
         }
+
+        isConnected = true;
 
         //add joint at runtime, connect to target and let distance be calculated automatically
         _joint = gameObject.AddComponent<DistanceJoint2D>();
