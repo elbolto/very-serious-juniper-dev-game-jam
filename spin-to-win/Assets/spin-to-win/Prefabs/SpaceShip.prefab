@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6963267535068363892}
   - component: {fileID: 7764919335383139425}
   - component: {fileID: 7081121542279595105}
+  - component: {fileID: 4346210850681433989}
   m_Layer: 0
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -109,7 +110,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -158,3 +159,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &4346210850681433989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536397648030329247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97aba56a81134478da1c85350d1df90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
