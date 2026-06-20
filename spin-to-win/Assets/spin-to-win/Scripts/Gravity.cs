@@ -14,9 +14,13 @@ public class Gravity : MonoBehaviour
         //get rigidbody from spaceship
         Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
 
+        if (rb == null) 
+        {
+            return;
+        }
+
         //calculate direction and distance
-        Vector2 planetPos = transform.position;
-        Vector2 direction = planetPos - rb.position;
+        Vector2 direction = (Vector2)transform.parent.position - rb.position;
 
         float distance = direction.magnitude;
 
