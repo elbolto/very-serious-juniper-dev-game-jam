@@ -5,6 +5,7 @@ public class CharacterMovement : MonoBehaviour
 {
     Camera _camera; 
     Rigidbody2D _rigidbody; 
+    ParticleSystem _particles; 
 
     [Range(0, 10)]
     public float thrust;
@@ -14,11 +15,18 @@ public class CharacterMovement : MonoBehaviour
     {
         _camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody2D>();
+        _particles = GetComponent<ParticleSystem>();
     }
 
-    void OnDisable()
+    void Update()
     {
-        
+        Mouse mouse = Mouse.current;
+        if (mouse.leftButton.isPressed)
+        {
+            _particles.Play();
+        } else {
+            _particles.Stop(true, ParticleSystemStopBehavior.StopEmitting); 
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +36,7 @@ public class CharacterMovement : MonoBehaviour
         Vector3 mousePosition = mouse.position.ReadValue();
         Vector3 clickWorldPos = _camera.ScreenToWorldPoint(mousePosition);
         Vector3 pos = transform.position; 
-        Vector3 forceDirection = pos - clickWorldPos;
+        Vector3 forceDirection = Vector3.Normalize(pos - clickWorldPos);
         
         if (mouse.leftButton.isPressed)
         { 
