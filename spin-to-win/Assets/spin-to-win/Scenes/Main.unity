@@ -428,8 +428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b1a514579be439e8d59fbdd14da54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gravity
-  gravitationalConstant: 5
-  planetMass: 1
+  gravitationalConstant: 10
+  planetMass: 10
 --- !u!1001 &4395614135600029552
 PrefabInstance:
   m_ObjectHideFlags: 0
