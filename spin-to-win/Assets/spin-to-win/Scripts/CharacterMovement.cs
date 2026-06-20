@@ -25,14 +25,18 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         Mouse mouse = Mouse.current;
+        Vector3 mousePosition = mouse.position.ReadValue();
+        Vector3 clickWorldPos = _camera.ScreenToWorldPoint(mousePosition);
+        Vector3 pos = transform.position; 
+        Vector3 forceDirection = pos - clickWorldPos;
+        
         if (mouse.leftButton.isPressed)
-        {
-            Vector3 mousePosition = mouse.position.ReadValue();
-            Vector3 clickWorldPos = _camera.ScreenToWorldPoint(mousePosition);
-            Vector3 pos = transform.position; 
-
-            Vector3 forceDirection = pos - clickWorldPos;
+        { 
             _rigidbody.AddForce(forceDirection * thrust);
         }
+
+        Vector2 direction = forceDirection.normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle + 90);
     }
 }
