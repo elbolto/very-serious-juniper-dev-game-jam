@@ -176,7 +176,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -188,6 +188,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &199005460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199005452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97aba56a81134478da1c85350d1df90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
+  thrustForce: 8
+  maxSpeed: 12
 --- !u!1 &1468193816
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b1a514579be439e8d59fbdd14da54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gravity
+  gravitationalForce: 10
 --- !u!58 &2952482620173631007
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -398,7 +413,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -502,6 +517,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8536397648030329247, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
       insertIndex: -1
       addedObject: {fileID: 199005455}
+    - targetCorrespondingSourceObject: {fileID: 8536397648030329247, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 199005460}
   m_SourcePrefab: {fileID: 100100000, guid: dbc5df0021e3549b6ba586f250bd2b00, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
