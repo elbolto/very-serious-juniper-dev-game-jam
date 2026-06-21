@@ -17,25 +17,25 @@ public class PulseAnimation : MonoBehaviour
     [Range(1,25)]
     public float duration;
 
-    [Range(1,25)]
-    public float startOffset;
-
-    SpriteRenderer _renderer;
-    Color _color;
+    public SpriteRenderer[] renderers; 
 
     void OnEnable()
     {
-        _renderer = GetComponent<SpriteRenderer>();
-        _color = _renderer.color;        
     }
  
     void Update()
     {
-        float currentTime = (Time.realtimeSinceStartup + startOffset) % duration / duration;
+        for (var i=0; i<renderers.Length; i++)
+        {
+            float startOffset = duration/(float)renderers.Length*i;
+            float currentTime = (Time.realtimeSinceStartup + startOffset) % duration / duration;
+            Color color = renderers[i].color;
+            color.a = alpha.Evaluate(currentTime);
+            renderers[i].color = color;
 
-        _color.a = alpha.Evaluate(currentTime);
-        _renderer.color = _color;
+            renderers[i].gameObject.transform.localScale = 
+                Vector3.one * (size.Evaluate(currentTime) * maxSize + minSize);        
+        }
 
-        gameObject.transform.localScale = Vector3.one * (size.Evaluate(currentTime) * maxSize + minSize);
     }
 }

@@ -119,6 +119,133 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!212 &528638967 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1033101110359620749, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+  m_PrefabInstance: {fileID: 2952482620173631003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1019963505 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5081626026042160038, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+  m_PrefabInstance: {fileID: 2952482620173631003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1272435681 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2998657418781510089, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+  m_PrefabInstance: {fileID: 2952482620173631003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1453532626 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5484058805009787149, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+  m_PrefabInstance: {fileID: 2952482620173631003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1938407272 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5638993967063410886, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+  m_PrefabInstance: {fileID: 2952482620173631003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2132344611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8002159085118757434, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+  m_PrefabInstance: {fileID: 2952482620173631003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2132344613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132344611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cdac2702b5e414e81ded586daa025b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  minSize: 1
+  maxSize: 9
+  alpha:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.55709773
+      value: 0.06999934
+      inSlope: 0.36958387
+      outSlope: 0.36958387
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.16278179
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8314168
+      value: 0.18969955
+      inSlope: 1.9519535
+      outSlope: 1.9519535
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.26823637
+      inSlope: 0.65711206
+      outSlope: 0.65711206
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06697458
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  size:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.010103513
+      value: 1.0092483
+      inSlope: -2.5355399
+      outSlope: -2.5355399
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05633622
+    - serializedVersion: 3
+      time: 0.39689347
+      value: 0.9711266
+      inSlope: -1.0122586
+      outSlope: -1.0122586
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.14526226
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.996967
+      value: 0.014224529
+      inSlope: -0.35173655
+      outSlope: -0.35173655
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08231056
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 5
+  startOffset: 1
+  renderers:
+  - {fileID: 1938407272}
+  - {fileID: 1019963505}
+  - {fileID: 1272435681}
+  - {fileID: 528638967}
+  - {fileID: 1453532626}
 --- !u!1001 &2952482620173631003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,10 +298,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 38299095847576819, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+    - {fileID: 8237388222448365801, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+    - {fileID: 3487259155238133661, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+    - {fileID: 2114873585133497991, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+    - {fileID: 5568457689652644521, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8002159085118757434, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2132344613}
   m_SourcePrefab: {fileID: 100100000, guid: 958630211b0a4474abbf221bb3bfed74, type: 3}
 --- !u!1001 &4395614135600029552
 PrefabInstance:
