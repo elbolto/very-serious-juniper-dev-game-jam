@@ -6,6 +6,7 @@ public class AttachmentSystem : MonoBehaviour
     private DistanceJoint2D _joint; //same distance between two objects
     private LineRenderer _line; //draw line (temporary, later there is going to be a sprite)
     private Rigidbody2D _target;
+    private bool _onCooldown;
 
     public bool isConnected { get; private set; } //read-only from outside class
     void Awake()
@@ -39,7 +40,7 @@ public class AttachmentSystem : MonoBehaviour
     public void Attach(Rigidbody2D target)
     {
         //if already connected return, there wont be any double connections
-        if(isConnected)
+        if(isConnected || _onCooldown)
         {
             return;
         }
@@ -57,7 +58,7 @@ public class AttachmentSystem : MonoBehaviour
         _line.enabled = true;
     }
 
-    public void Detach()
+    public async void Detach()
     {
         if(!isConnected)
         {
@@ -67,6 +68,10 @@ public class AttachmentSystem : MonoBehaviour
         Destroy(_joint);
         _target = null;
         isConnected = false;
-        _line.enabled = false; 
+        _line.enabled = false;
+        
+        _onCooldown = true;
+        await Awaitable.WaitForSecondsAsync(1f);
+        _onCooldown = false;
     }
 }
