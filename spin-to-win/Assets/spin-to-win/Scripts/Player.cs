@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour
         {
             _movement.enabled = false;
         };
-        
+
         _inGame.Update = () => { };
 
         ////////////////////////
@@ -85,7 +86,9 @@ public class Player : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (_stateMachine.Current == _inGame)
-            _stateMachine.Transition(_dead);
+        if (_stateMachine.Current == _inGame && other.name == "Boundaries")
+        {
+            _stateMachine.Transition(_dead);            
+        }
     }
 }
