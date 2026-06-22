@@ -21,12 +21,8 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         Mouse mouse = Mouse.current;
-        if (mouse.leftButton.isPressed)
-        {
-            _particles.Play();
-        } else {
-            _particles.Stop(true, ParticleSystemStopBehavior.StopEmitting); 
-        }
+        var emission = _particles.emission;
+        emission.enabled = mouse.leftButton.isPressed;
     }
 
     // Update is called once per frame
