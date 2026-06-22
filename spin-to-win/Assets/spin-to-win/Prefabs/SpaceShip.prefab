@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aba56a81134478da1c85350d1df90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  thrust: 4.33
+  thrust: 4.52
 --- !u!198 &1037567253115593331
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4990,3 +4990,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb187bcb904904095a7eb6e0b5849a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  respawnDelay: 3
