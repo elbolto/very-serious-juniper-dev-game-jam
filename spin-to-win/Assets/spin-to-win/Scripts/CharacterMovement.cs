@@ -10,6 +10,8 @@ public class CharacterMovement : MonoBehaviour
     [Range(0, 10)]
     public float thrust;
 
+    public float Speed => _rigidbody != null ? _rigidbody.linearVelocity.magnitude : 0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
