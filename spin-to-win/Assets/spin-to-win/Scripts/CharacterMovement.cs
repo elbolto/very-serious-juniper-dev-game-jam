@@ -9,7 +9,7 @@ public class CharacterMovement : MonoBehaviour
 
     [Range(0, 10)]
     public float thrust;
-
+    public float fuel;
     public float Speed => _rigidbody != null ? _rigidbody.linearVelocity.magnitude : 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,13 +22,19 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        Mouse mouse = Mouse.current;
-        var emission = _particles.emission;
-        emission.enabled = mouse.leftButton.isPressed;
+        ThrustParticles();
     }
 
     // Update is called once per frame
     void FixedUpdate()
+    {
+        if(fuel > 0)
+        {
+            Thrust();
+        }
+    }
+
+    void Thrust()
     {
         Mouse mouse = Mouse.current;
         Vector3 mousePosition = mouse.position.ReadValue();
@@ -39,10 +45,19 @@ public class CharacterMovement : MonoBehaviour
         if (mouse.leftButton.isPressed)
         { 
             _rigidbody.AddForce(forceDirection * thrust);
+            fuel = Mathf.Max(0f, fuel - Time.fixedDeltaTime);
+
         }
 
         Vector2 direction = forceDirection.normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle + 90);
+    }
+
+    void ThrustParticles()
+    {
+        Mouse mouse = Mouse.current;
+        var emission = _particles.emission;
+        emission.enabled = fuel > 0 && mouse.leftButton.isPressed;
     }
 }
