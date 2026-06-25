@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
-    Camera _camera; 
-    Rigidbody2D _rigidbody; 
-    ParticleSystem _particles; 
+    Camera _camera;
+    Rigidbody2D _rigidbody;
+    ParticleSystem _particles;
 
     [Range(0, 10)]
     public float thrust;
