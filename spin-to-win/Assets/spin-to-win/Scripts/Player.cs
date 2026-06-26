@@ -1,8 +1,10 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public event Action OnRespawned;
     public float respawnDelay = 3f;
 
     readonly StateMachine _stateMachine = new StateMachine();
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
         _inGame.OnEnter = () =>
         {
             Debug.Log("Enter InGame State");
+            OnRespawned?.Invoke();
             // spawn ship
             transform.position = _spawnPosition;
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -81,7 +84,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        _stateMachine?.Current?.Update();  
+        _stateMachine?.Current?.Update();
+
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            _stateMachine.Transition(_inGame);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -90,5 +98,11 @@ public class Player : MonoBehaviour
         {
             _stateMachine.Transition(_dead);            
         }
+    }
+
+    //for my score manager
+    public bool IsAlive() 
+    { 
+        return _stateMachine.Current == _inGame; 
     }
 }

@@ -9,7 +9,9 @@ public class CharacterMovement : MonoBehaviour
 
     [Range(0, 10)]
     public float thrust;
-    public float fuel;
+    public float maxFuel;
+    private float _fuel;
+    public float Fuel => _fuel; //readonly from outside
     public float Speed => _rigidbody != null ? _rigidbody.linearVelocity.magnitude : 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
         _camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody2D>();
         _particles = GetComponent<ParticleSystem>();
+        _fuel = maxFuel;
     }
 
     void Update()
@@ -28,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(fuel > 0)
+        if(_fuel > 0)
         {
             Thrust();
         }
@@ -45,7 +48,7 @@ public class CharacterMovement : MonoBehaviour
         if (mouse.leftButton.isPressed)
         { 
             _rigidbody.AddForce(forceDirection * thrust);
-            fuel = Mathf.Max(0f, fuel - Time.fixedDeltaTime);
+            _fuel = Mathf.Max(0f, _fuel - Time.fixedDeltaTime);
 
         }
 
@@ -58,6 +61,11 @@ public class CharacterMovement : MonoBehaviour
     {
         Mouse mouse = Mouse.current;
         var emission = _particles.emission;
-        emission.enabled = fuel > 0 && mouse.leftButton.isPressed;
+        emission.enabled = _fuel > 0 && mouse.leftButton.isPressed;
+    }
+
+    public void ResetFuel()
+    {
+        _fuel = maxFuel;
     }
 }
