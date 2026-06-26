@@ -1,11 +1,15 @@
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public static CharacterMovement Instance;
     Camera _camera;
     Rigidbody2D _rigidbody;
     ParticleSystem _particles;
+
+    float _damping;
 
     [Range(0, 10)]
     public float thrust;
@@ -13,14 +17,31 @@ public class CharacterMovement : MonoBehaviour
     private float _fuel;
     public float Fuel => _fuel; //readonly from outside
     public float Speed => _rigidbody != null ? _rigidbody.linearVelocity.magnitude : 0f;
+    public bool damping
+    {
+        get
+        {
+            // doesn't matter
+            return true;
+        }
+
+        set
+        {
+            _rigidbody.linearDamping = value?_damping:0;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
+        // very hacky Singleton
+        Instance = this; 
+
         _camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody2D>();
         _particles = GetComponent<ParticleSystem>();
         _fuel = maxFuel;
+        _damping = _rigidbody.linearDamping;
     }
 
     void Update()

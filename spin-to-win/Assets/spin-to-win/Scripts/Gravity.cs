@@ -13,10 +13,16 @@ public class Gravity : MonoBehaviour
     {
         //get rigidbody from spaceship
         Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
-
         if (rb == null) 
         {
             return;
+        }
+
+        // turn of damping when in gravity fields. Otherwise it's not fun.
+        CharacterMovement player = col.gameObject.GetComponent<CharacterMovement>();
+        if (player != null)
+        {
+            player.damping = false;
         }
 
         //calculate direction and distance
@@ -29,6 +35,16 @@ public class Gravity : MonoBehaviour
 
         //normalize direction and add force
         rb.AddForce(direction.normalized * gravitationalForce);
-        Debug.Log(gameObject.name);
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        // turn of damping when in gravity fields. Otherwise it's not fun.
+        CharacterMovement player = col.gameObject.GetComponent<CharacterMovement>();
+        if (player != null)
+        {
+            player.damping = true;
+            Debug.Log("Turn on damping");
+        }
     }
 }
