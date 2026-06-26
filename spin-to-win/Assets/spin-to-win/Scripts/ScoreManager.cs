@@ -13,15 +13,13 @@ public class ScoreManager : MonoBehaviour
     public float scoreDivision;
     private float _score;
     //tracks last x position
-    private float _temp;
-    private float _max;
-    private float _startX; 
+    private float _traveledDistance; 
+    private Vector3 _lastPosition; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _startX = shipPosition.position.x;
-        _max = _startX;
+        _traveledDistance = 0;
         _score = 0;
         fuelSlider.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
@@ -32,23 +30,24 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float currentX = shipPosition.position.x;
-        if(_max < currentX && player.IsAlive())
+        if(player.IsAlive())
         {
-            _max = currentX;
+            _traveledDistance += (_lastPosition - shipPosition.position).magnitude;
+            _lastPosition = shipPosition.position;
+
             //divide by a value so points are lower
-            _score = (_max - _startX) / scoreDivision;
+            _score = _traveledDistance/scoreDivision;
+            
             //convert to int
             scoreText.text = Mathf.FloorToInt(_score).ToString();
         }
+
         if(!player.IsAlive())
         {
             Ending();
         }
-        _temp = shipPosition.position.x;
         
     }
-
     private void Ending()
     {
         endingText.text = "Final score: " + Mathf.FloorToInt(_score).ToString();
@@ -60,8 +59,7 @@ public class ScoreManager : MonoBehaviour
     private void Reset()
     {
         _score = 0;
-        _startX = shipPosition.position.x;
-        _max = _startX;
+        _lastPosition = shipPosition.position;
         scoreText.gameObject.SetActive(true);
         endingText.gameObject.SetActive(false);
         fuelSlider.gameObject.SetActive(true);
