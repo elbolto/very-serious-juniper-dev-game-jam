@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -13,11 +14,14 @@ public class ScoreManager : MonoBehaviour
     private float _score;
     //tracks last x position
     private float _temp;
+    private float _max;
+    private float _startX; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _temp = shipPosition.position.x;
+        _startX = shipPosition.position.x;
+        _max = _startX;
         _score = 0;
         fuelSlider.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
@@ -28,11 +32,12 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float offset = shipPosition.position.x - _temp;
-        if(offset > 0 && player.IsAlive())
+        float currentX = shipPosition.position.x;
+        if(_max < currentX && player.IsAlive())
         {
+            _max = currentX;
             //divide by a value so points are lower
-            _score += offset / scoreDivision;
+            _score = (_max - _startX) / scoreDivision;
             //convert to int
             scoreText.text = Mathf.FloorToInt(_score).ToString();
         }
@@ -55,7 +60,8 @@ public class ScoreManager : MonoBehaviour
     private void Reset()
     {
         _score = 0;
-        _temp = shipPosition.position.x;
+        _startX = shipPosition.position.x;
+        _max = _startX;
         scoreText.gameObject.SetActive(true);
         endingText.gameObject.SetActive(false);
         fuelSlider.gameObject.SetActive(true);
