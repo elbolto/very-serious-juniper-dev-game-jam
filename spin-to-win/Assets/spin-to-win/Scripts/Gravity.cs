@@ -25,9 +25,10 @@ public class Gravity : MonoBehaviour
         float distance = direction.magnitude;
 
         //newtons law of gravity
-        float gravitationalForce = gravitationalConstant * rb.mass * planetMass / (distance * distance);
-        
+        float gravitationalForce = gravitationalConstant * rb.mass * planetMass/distance;
+
         //normalize direction and add force
         rb.AddForce(direction.normalized * gravitationalForce);
+        Debug.Log(gameObject.name);
     }
 }
