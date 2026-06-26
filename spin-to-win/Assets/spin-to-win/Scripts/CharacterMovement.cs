@@ -27,11 +27,18 @@ public class CharacterMovement : MonoBehaviour
 
         set
         {
-            _rigidbody.linearDamping = value?_damping:0;
+            // sorry for hardcoding, can't find the bug now
+            _rigidbody.linearDamping = value?0.2f:0;
         }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+   
+    void Start()
+    {
+        _damping = _rigidbody.linearDamping;    
+    }
+   
     void OnEnable()
     {
         // very hacky Singleton

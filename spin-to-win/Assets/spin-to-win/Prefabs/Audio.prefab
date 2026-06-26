@@ -412,7 +412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4337577799532332448}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -624.5425, y: 367.5451, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   layer1: {fileID: 216393816279511355}
   layer2: {fileID: 4629409000230829613}
   layer3: {fileID: 5730740163967892595}
-  layer2Threshold: 3
-  layer3Threshold: 7
+  layer2Threshold: 10
+  layer3Threshold: 15
   fadeSpeed: 2
   player: {fileID: 0}

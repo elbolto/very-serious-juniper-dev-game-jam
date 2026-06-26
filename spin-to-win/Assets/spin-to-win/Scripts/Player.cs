@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,14 +29,16 @@ public class Player : MonoBehaviour
         _inGame.OnEnter = () =>
         {
             Debug.Log("Enter InGame State");
-            OnRespawned?.Invoke();
+     
             // spawn ship
             transform.position = _spawnPosition;
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.linearVelocity = Vector2.zero;
+            
             GetComponent<SpriteRenderer>().enabled = true;
             _movement.enabled = true;
-
+     
+            OnRespawned?.Invoke();
             // activate controls
         };
 
@@ -44,7 +47,14 @@ public class Player : MonoBehaviour
             _movement.enabled = false;
         };
 
-        _inGame.Update = () => { };
+        _inGame.Update = () =>
+        {
+           if (_movement.Speed < 0.4 && _movement.Fuel <= 0) 
+            {
+                Debug.Log("Faster, bitch!!");
+                _stateMachine.Transition(_dead);            
+            }
+        };
 
         ////////////////////////
         /// Dead State

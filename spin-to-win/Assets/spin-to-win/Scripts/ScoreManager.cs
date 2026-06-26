@@ -32,7 +32,7 @@ public class ScoreManager : MonoBehaviour
     {
         if(player.IsAlive())
         {
-            _traveledDistance += (_lastPosition - shipPosition.position).magnitude;
+            _traveledDistance += (_lastPosition - shipPosition.position).magnitude * Time.deltaTime;
             _lastPosition = shipPosition.position;
 
             //divide by a value so points are lower
@@ -60,6 +60,7 @@ public class ScoreManager : MonoBehaviour
     {
         _score = 0;
         _lastPosition = shipPosition.position;
+        _traveledDistance = 0; 
         scoreText.gameObject.SetActive(true);
         endingText.gameObject.SetActive(false);
         fuelSlider.gameObject.SetActive(true);
